@@ -16,4 +16,4 @@ spec:
       - name: go-app
         image: ghcr.io/your-username/your-repo:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
