@@ -26,12 +26,16 @@ jobs:
           echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
 
+      - name: Set Kubernetes Context
+        uses: azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
       - name: Test Kubernetes Connection
         run: |
-          kubectl get nodes --kubeconfig=kubeconfig
+          kubectl get nodes --kubeconfig=$PWD/kubeconfig
 
-      - name: Apply Kubernetes Service
-        uses: azure/k8s-deploy@v3
-        with:
-          manifests: |
-            k8s/service.yaml
+      - name: Apply Kubernetes Service (Manual Command)
+        run: |
+          kubectl apply -f k8s/service.yaml --kubeconfig=$PWD/kubeconfig --validate=false
