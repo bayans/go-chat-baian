@@ -59,3 +59,5 @@ jobs:
         with:
           manifests: |
             k8s/service.yaml
+          kubectl-command: |
+            kubectl apply --validate=false
