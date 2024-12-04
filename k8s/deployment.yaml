@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: ghcr.io/bayans/go-chat-baian:latest
+        image: ghcr.io/bayans/go-chat-baian:main
         ports:
         - containerPort: 3000
