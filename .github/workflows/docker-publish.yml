@@ -21,11 +21,10 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Set Kubernetes Context
-        uses: azure/k8s-set-context@v2
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Decode and Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig
+          export KUBECONFIG=$PWD/kubeconfig
 
       - name: Test Kubernetes Connection
         run: |
