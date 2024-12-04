@@ -4,7 +4,7 @@ metadata:
   name: my-app-service
 spec:
   selector:
-    app: my-app
+    app: go-app
   ports:
   - protocol: TCP
     port: 80         # Port on which the service will be accessible
