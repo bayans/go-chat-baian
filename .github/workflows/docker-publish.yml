@@ -3,6 +3,9 @@ name: Deploy to Kubernetes
 on:
   push:
     branches: [ "main" ]
+    
+permissions:
+  packages: write
 
 env:
   REGISTRY: ghcr.io
