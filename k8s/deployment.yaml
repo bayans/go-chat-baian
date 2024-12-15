@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: ghcr.io/bayans/go-chat-baian:main
+        image: ghcr.io/bayans/go-chat-baian:${GITHUB_SHA}
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
